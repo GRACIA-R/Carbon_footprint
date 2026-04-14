@@ -1,22 +1,13 @@
-import gspread
-from google.oauth2.service_account import Credentials
+from supabase import create_client
 import streamlit as st
 import pandas as pd
 
-SCOPES = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive",
-]
-SHEET_NAME = "carbon_footprint_responses"
-WORKSHEET = "Sheet1"
-
 def load_data():
     try:
-        creds_dict = dict(st.secrets["gcp_service_account"])
-        creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
-        client = gspread.authorize(creds)
-        sheet = client.open(SHEET_NAME).worksheet(WORKSHEET)
-        data = sheet.get_all_records()
-        return pd.DataFrame(data)
-    except Exception as e:
+        url = st.secrets["supabase"]["url"]
+        key = st.secrets["supabase"]["key"]
+        client = create_client(url, key)
+        result = client.table("responses").select("*").execute()
+        return pd.DataFrame(result.data)
+    except:
         return pd.DataFrame()
