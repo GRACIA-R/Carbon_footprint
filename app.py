@@ -160,11 +160,11 @@ div.stButton > button:hover {
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 🌿 ITZ Carbon")
+    st.markdown("## 🌿 ITESCA")
     st.markdown("---")
     pagina = st.radio(
         "Navegación",
-        ["📋 Calcular mi huella", "📊 Dashboard universitario"],
+        ["📋 Calcular mi huella", "Resumen estadístico"],
         label_visibility="collapsed"
     )
     st.markdown("---")
@@ -197,7 +197,7 @@ if "📋" in pagina:
         with col1:
             genero = st.selectbox("Género", ["Hombre", "Mujer", "Otro / Prefiero no decir"])
         with col2:
-            edad = st.slider("Edad", 17, 50, 21)
+            edad = st.slider("Edad", 17, 70, 20)
         with col3:
             carrera = st.selectbox("Carrera / Programa", [
                 "Administración",
@@ -244,13 +244,13 @@ if "📋" in pagina:
         with col1:
             electricidad_kwh = st.number_input(
                 "Consumo eléctrico mensual del hogar (kWh)",
-                min_value=0.0, max_value=2000.0, value=250.0, step=10.0,
+                min_value=0.0, max_value=20000.0, value=250.0, step=10.0,
                 help="Puedes encontrarlo en tu recibo de CFE"
             )
         with col2:
             gas_kg = st.number_input(
                 "Consumo mensual de gas LP (kg)",
-                min_value=0.0, max_value=100.0, value=10.0, step=0.5,
+                min_value=0.0, max_value=1000.0, value=10.0, step=0.5,
                 help="Un tanque estacionario de 20 kg dura ~1 mes en hogar promedio"
             )
         with col3:
