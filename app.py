@@ -209,6 +209,7 @@ if "📋" in pagina:
                 "Ing. en Gestión Empresarial",
                 "Ing. Mecánica",
                 "Ing. en Sistemas Computacionales",
+                "Personal administrativo",
                 "Posgrado",
             ])
         st.markdown('</div>', unsafe_allow_html=True)
